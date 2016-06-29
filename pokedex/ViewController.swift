@@ -15,8 +15,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var pokemon = [Pokeman]()
-    var filteredPokemon = [Pokeman]()
+    var pokemon = [Pokemon]()
+    var filteredPokemon = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
     var inSearchMode = false
     
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             for eachRow in rows {
                 let pokeId = Int(eachRow["id"]!)!
                 let name = eachRow["identifier"]!
-                let poke = Pokeman(name: name, pokedexId: pokeId)
+                let poke = Pokemon(name: name, pokedexId: pokeId)
                 pokemon.append(poke)
             }
             
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
             
-            let poke: Pokeman!
+            let poke: Pokemon!
             
             if inSearchMode {
                 poke = filteredPokemon[indexPath.row]
@@ -89,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
-        var poke: Pokeman!
+        var poke: Pokemon!
         
         if inSearchMode {
             poke = filteredPokemon[indexPath.row]
@@ -152,7 +152,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PokemonDetailVC" {
             if let detailsVC = segue.destinationViewController as? PokemonDetailVC {
-                if let poke = sender as? Pokeman {
+                if let poke = sender as? Pokemon {
                     detailsVC.pokemon = poke
                 }
             }

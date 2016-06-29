@@ -13,7 +13,7 @@ class PokeCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
-    var pokeman: Pokeman!
+    var pokeman: Pokemon!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,7 +21,7 @@ class PokeCell: UICollectionViewCell {
         self.clipsToBounds = true
     }
     
-    func configureCell(pokeman: Pokeman) {
+    func configureCell(pokeman: Pokemon) {
         self.pokeman = pokeman
         
         nameLbl.text = self.pokeman.name.capitalizedString
